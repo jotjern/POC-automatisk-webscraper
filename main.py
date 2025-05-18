@@ -1,11 +1,9 @@
-import urllib.parse
 import requests
 import smtplib
 import os
 
 from email.message import EmailMessage
 from bs4 import BeautifulSoup
-import urllib
 
 GMAIL_APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"]
 
