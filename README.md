@@ -28,7 +28,7 @@ Vi definerer hvor ofte og når den skal kjøre her:
     # Every day at 08:00 London time
     - cron: '0 8 * * *'
 ```
-Dette er en cronjob, veldig scuffed å finne ut hva det betyr, men bare å spørre chat.
+Dette er en cronjob, litt forvirrende akkurat hva `0 8 * * *` betyr, men bare å spørre chat.
 
-Eneste spesielle er at vi må hente GMAIL_APP_PASSWORD fra et sted, la den inn som en "repository secret" (idk hva det er egt) ved å gå på github repositoriet, settings, secrets and variables også actions. Da kan vi bruke den i `workflow.yml` til å sette en env variabel. 
+Vi må hente GMAIL_APP_PASSWORD fra et sted, så jeg la den inn som en "repository secret" ved å gå på github repositoriet, settings, secrets and variables også actions. Da kan vi bruke den i `workflow.yml` til å sette en env variabel til main.py. 
 
