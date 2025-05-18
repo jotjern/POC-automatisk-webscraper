@@ -28,12 +28,12 @@ email += "\n"
 
 msg = EmailMessage()
 msg['Subject'] = 'Liste over VG-artikler'
-msg['From'] = 'jotjernshaugen@gmail.com'
-msg['To'] = 'jotjernshaugen@gmail.com'
+msg['From'] = 'jotjernshaugen+1234@gmail.com'
+msg['To'] = 'jotjernshaugen+1234@gmail.com'
 msg.set_content(email)
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-    smtp.login('jotjernshaugen@gmail.com', GMAIL_APP_PASSWORD)
+    smtp.login('jotjernshaugen+1234@gmail.com', GMAIL_APP_PASSWORD)
     smtp.send_message(msg)
 
 print("Email sent successfully!")
