@@ -1,6 +1,6 @@
 # Proof-of-concept epost greie
 
-Dette prosjektet sjekker vg.no en gang om dagen og sender ut en e-post med alle overskriftene på forsiden. Den funker slik:
+Dette prosjektet sjekker vg.no en gang om dagen og sender ut en e-post med alle overskriftene på forsiden. Ment som en demo for å vise hvordan man kunne implementert noe lignende. Prosjektet funker slik:
 
 ## Laste ned nettside og hente informasjon
 
