@@ -12,26 +12,30 @@ GMAIL_APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"]
 response = requests.get("https://vg.no")
 response.raise_for_status()
 
-soup = BeautifulSoup(response.text, "html.parser")
-articles = soup.find_all("article")
+website = BeautifulSoup(response.text, "html.parser")
 
 email = "Her er alle VG-artiklene på forsiden:\n\n"
-email += "<ul>\n"
 
-for article in articles:
-  title = article.text.strip().removesuffix("VG+").replace("\n", " ").replace("  ", " ")
-  link = urllib.parse.urljoin(response.url, article.a['href'])
+for article in website.find_all("article"):
+  title = article.text.strip()
+  # Fjern linjeskift og ekstra mellomrom
+  title = title.replace("\n", " ").replace("  ", " ")
 
-  email += f"<li><a href={'"'}{link}{'"'}>{title}</a></li>\n\n"
-email += "\n</ul>"
+  link = article.find("a")
+
+  url = "https://www.vg.no" + link["href"]
+
+  email += title + ": " + url + "\n"
+email += "\n"
 
 msg = EmailMessage()
-msg['Subject'] = 'Daglig oppsummering av VG-artikler'
+msg['Subject'] = 'Liste over VG-artikler'
 msg['From'] = 'jotjernshaugen@gmail.com'
 msg['To'] = 'jotjernshaugen@gmail.com'
-msg.set_content(email, subtype='html')
+msg.set_content(email)
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
     smtp.login('jotjernshaugen@gmail.com', GMAIL_APP_PASSWORD)
     smtp.send_message(msg)
 
+print("Email sent successfully!")
