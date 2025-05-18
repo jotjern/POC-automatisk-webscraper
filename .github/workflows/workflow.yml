@@ -3,7 +3,7 @@ name: Daily Python Script
 on:
   schedule:
     # Every day at 08:00 London time
-    - cron: '* * * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
 
 jobs:
