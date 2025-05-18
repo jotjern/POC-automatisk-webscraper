@@ -22,7 +22,7 @@ for article in articles:
   title = article.text.strip().removesuffix("VG+").replace("\n", " ").replace("  ", " ")
   link = urllib.parse.urljoin(response.url, article.a['href'])
 
-  email += f"<li><a href='{urllib.parse.quote(link)}>{urllib.parse.quote(title)}</a></li>\n\n"
+  email += f"<li><a href={'"'}{link}{'"'}>{title}</a></li>\n\n"
 email += "\n</ul>"
 
 msg = EmailMessage()
